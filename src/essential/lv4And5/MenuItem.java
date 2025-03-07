@@ -1,4 +1,4 @@
-package essential.lv4;
+package essential.lv4And5;
 
 public class MenuItem {
     private String name;
@@ -10,6 +10,7 @@ public class MenuItem {
     MenuItem(String name, int singlePrice, String info){
         this.name = name;
         this.singlePrice = singlePrice;
+        this.setPrice = 0;
         this.info = info;
     }
     MenuItem(String name, int singlePrice, int setPrice, String info){

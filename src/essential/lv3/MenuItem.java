@@ -3,15 +3,10 @@ package essential.lv3;
 public class MenuItem {
     private String name;
     private int singlePrice;
-    private int setPrice;
+    private int setPrice = 0;
     private String info;
 
     //생성자
-    MenuItem(String name, int singlePrice, String info){
-        this.name = name;
-        this.singlePrice = singlePrice;
-        this.info = info;
-    }
     MenuItem(String name, int singlePrice, int setPrice, String info){
         this.name = name;
         this.singlePrice = singlePrice;

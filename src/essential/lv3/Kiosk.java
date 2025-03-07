@@ -71,6 +71,8 @@ public class Kiosk {
 
     public String selectMenu(List<MenuItem> menuItems, int index) {
         MenuItem selected = menuItems.get(index);
+
+
         System.out.println((index + 1) + ". " + selected.getName() + "를 선택하셨습니다. 단품 " + selected.getSinglePrice() + "원~ | 세트 " + selected.getSetPrice() + "원~ 입니다.");
         return menuItems.get(index).getName();
     }
