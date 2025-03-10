@@ -24,11 +24,10 @@ public class ShoppingCart {
     }
 
     public void printCart(){
-        System.out.println("=============================<장바구니 목록>===============================");
+        System.out.println("========================<장바구니 목록>==========================");
         for(int i = 0; i<menuList.size(); i++){
             System.out.println("||" + menuList.get(i).getName() +"\t "+menuList.get(i).getSinglePrice()+"원 \t  X " + count.get(i) + "\t \t " + price.get(i) +"원");
         }
-        System.out.println("=========================================================================");
         System.out.println("\n =========================<총 금액>===========================");
         int totalPrice = 0;
         for (Integer integer : price) {

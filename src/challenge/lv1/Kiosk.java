@@ -30,6 +30,8 @@ public class Kiosk {
 
         while(exitFlag){
             inputCategory(); //카테고리 보여주고 입력받기
+
+            if(categoryInput == 0) break;
             Menu selectedMenu = menuList.get(categoryInput-1);
             
             cont = inputMenu(selectedMenu);// 입력받은 카테고리에 맞는 메뉴 보여주고 메뉴 입력받기
