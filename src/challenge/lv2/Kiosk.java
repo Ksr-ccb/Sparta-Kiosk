@@ -1,6 +1,4 @@
-package challenge.lv1;
-
-import challenge.lv2.DiscountType;
+package challenge.lv2;
 
 import java.util.InputMismatchException;
 import java.util.List;
@@ -78,7 +76,19 @@ public class Kiosk {
                     System.out.println("이용해주셔서 감사합니다.");
                     return;
                 }else{
-                    flag = userShoppingCart();
+                    if( categoryInput <= menuList.size()){
+                        System.out.println(menuList.get(categoryInput-1).getCategoryName()+"(이)가 선택되었습니다.");
+                        flag=false;
+                    }else if (categoryInput == menuList.size() +1){
+                        // 장바구니 출력
+                        System.out.println("주문하기(이)가 선택되었습니다. 장바구니를 출력합니다.");
+                        shoppingCart.printCart();
+                        inputPayment();
+                    }else{
+                        //장바구니 초기화
+                        System.out.println("주문 취소 하기(이)가 선택되었습니다. 장바구니를 초기화합니다.");
+                        shoppingCart.resetCart();
+                    }
                 }
             } catch (InputMismatchException e) {
                 System.out.println("메뉴에 있는 번호를 입력해주세요!");
@@ -109,19 +119,16 @@ public class Kiosk {
     }
 
     private void inputPayment(){
-
-
         while (true) {
             try {
                 int paymentInput = sc.nextInt();
                 if (paymentInput == 1){
                     System.out.println("장바구니 목록을 구매합니다.");
-
-                    shoppingCart.resetCart(); //장바구니 초기화
-                    System.out.println("초기화면으로 돌아갑니다.");
+                    //구매
+                    purchaseCart();
                     break;
                 } else if (paymentInput == 2) {
-                    System.out.println("구매를 진행하지 않고 초기화면으로 돌아갑니다.");
+                    System.out.println("구매를 진행하지 않습니다.");
                     break;
                 } else {
                     throw new InputMismatchException();
@@ -133,21 +140,53 @@ public class Kiosk {
         }
     }
 
-    private boolean userShoppingCart(){
-        if( categoryInput <= menuList.size()){
-            System.out.println(menuList.get(categoryInput-1).getCategoryName()+"(이)가 선택되었습니다.");
-            return false;
-        }else if (categoryInput == menuList.size() +1){
-            // 장바구니 출력
-            System.out.println("주문하기(이)가 선택되었습니다. 장바구니를 출력합니다.");
-            shoppingCart.printCart();
-            inputPayment();
-            return true;
-        }else{
-            //장바구니 초기화
-            System.out.println("주문 취소 하기(이)가 선택되었습니다. 장바구니를 초기화합니다.");
-            shoppingCart.resetCart();
-            return true;
+    private void purchaseCart(){
+        DiscountType discountType;
+        int purchaseInput;
+
+        while (true) {
+            printDiscount();
+            try {
+                purchaseInput = sc.nextInt();
+                if (purchaseInput == 1) {
+                    discountType = DiscountType.Coupon;
+                    break;
+                } else if (purchaseInput == 2) {
+                    discountType = DiscountType.Cash;
+                    break;
+                } else if (purchaseInput ==3 ){
+                    discountType = DiscountType.General;
+                    break;
+                } else{
+                    throw new InputMismatchException();
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("메뉴에 있는 번호를 입력해주세요!");
+                sc.nextLine();
+            }
+        }
+        shoppingCart.applyDiscount(discountType);
+        System.out.println("위 메뉴를 장바구니에 구매 하시겠습니까?");
+        System.out.println("1. 결제하기   |   2. 돌아가기 ");
+        while (true) {
+            try {
+                purchaseInput = sc.nextInt();
+                if (purchaseInput == 1){
+                    System.out.println("장바구니 목록을 구매합니다.");
+                    //구매
+                    shoppingCart.resetCart(); //장바구니 초기화
+                    System.out.println("초기화면으로 돌아갑니다.");
+                    break;
+                } else if (purchaseInput == 2) {
+                    System.out.println("구매를 진행하지 않습니다.");
+                    break;
+                } else {
+                    throw new InputMismatchException();
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("메뉴에 있는 번호를 입력해주세요!");
+                sc.nextLine();
+            }
         }
     }
 
@@ -172,4 +211,12 @@ public class Kiosk {
             }
         }
     }
+    public void printDiscount(){
+        System.out.println("=========================[ 주문하기 ]=============================");
+        System.out.println("|| 1. 3000원 할인 쿠폰(1만원 이상 시 사용가능) ");
+        System.out.println("|| 2. 현금 결제(10%) ");
+        System.out.println("|| 3. 할인 적용 하지않기");
+        System.out.println("=================================================================");
+    }
+
 }
