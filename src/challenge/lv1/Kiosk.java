@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Kiosk {
-    private List<Menu> menuList;
-    private ShoppingCart shoppingCart;
+    private final List<Menu> menuList;
+    private final ShoppingCart shoppingCart;
     private final Scanner sc = new Scanner(System.in);
 
 
@@ -109,8 +109,6 @@ public class Kiosk {
     }
 
     private void inputPayment(){
-
-
         while (true) {
             try {
                 int paymentInput = sc.nextInt();

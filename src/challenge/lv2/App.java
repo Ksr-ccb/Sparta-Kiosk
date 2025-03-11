@@ -45,8 +45,9 @@ public class App {
         menuList.add(sideMenu);
 
         ShoppingCart shoppingCart = new ShoppingCart();
+        UserInputManager userInputManager = new UserInputManager();
 
-        Kiosk kiosk = new Kiosk(menuList, shoppingCart);
+        Kiosk kiosk = new Kiosk(menuList, shoppingCart, userInputManager);
         kiosk.startKiosk();
     }
 }
