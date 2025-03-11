@@ -110,9 +110,12 @@ public class Kiosk {
         int length = menuList.size();
         //카테고리 출력
         System.out.println("========================================< 맘스땃쥐 >============================================");
-        for (int i = 0; i <length; i++) {
-            System.out.println("|| " + (i + 1) + ". " + menuList.get(i).getCategoryName());
-        }
+
+        menuList.stream()
+                .forEach(value->{
+                        System.out.println("|| " + value.getCategoryNum()+ ". " + value.getCategoryName());
+                    }
+                );
         System.out.println("|| 0. 나가기 ");
         System.out.println("===============================================================================================");
         isCartEmpty = shoppingCart.orderMenu(length+1);
@@ -221,13 +224,13 @@ public class Kiosk {
     //장바구니 담기 여부 입력받기
     private void inputOrder(Menu selectedMenu){
         MenuItem selectMenu = selectedMenu.selectMenuItem(itemInput - 1);
-
+        int orderInput ;
         System.out.println("위 메뉴를 장바구니에 추가하시겠습니까?");
         System.out.println("1. 장바구니에 담기   |   0. 메뉴판으로 ");
 
         while (true) {
             try {
-                int orderInput = userInputManager.inputIntegerValue();
+                orderInput = userInputManager.inputIntegerValue();
                 if (orderInput == 1) {
                     shoppingCart.addCart(selectMenu);
                     System.out.println(selectMenu.getName() + "를 장바구니에 담습니다.");

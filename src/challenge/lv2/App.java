@@ -17,7 +17,7 @@ public class App {
             new MenuItem("트리플딥치즈싸이버거",5700,8100,"BEST 딥치즈버거가 싸이버거로 재탄생! 진한 치즈소스와 통다리살 패티가 일품"),
             new MenuItem("싸이플렉스버거",8300,10700,"통다리살 싸이패티가 2장! 압도적 사이즈의 FLEX, 리얼 입찢버거 싸이플렉스버거")
         ));
-        Menu burgerMenu = new Menu(burgerItems, "버거", 0);
+        Menu burgerMenu = new Menu(burgerItems, "버거", 1);
 
         List<MenuItem> chickenItems = new ArrayList<>(Arrays.asList(
                 new MenuItem("후라이드치킨",10000,"후라이드 치킨의 고소함과 바삭바삭함이 그대로! 쌀눈 함유 오일로 튀겨내어 필수영양성분과 육즙이 풍부한 치킨."),
@@ -29,7 +29,7 @@ public class App {
                 new MenuItem("간장마늘 빅싸이순살",15000,"알싸한 마늘 향의 매콤함, 특제 간장소스의 단짠이 조화로운 닭다리살 순살치킨"),
                 new MenuItem("맘스양념 빅싸이순살",15000,"매콤달콤 특제 양념소스로 닭다리살 순살치킨을 더 크게~ 육즙을 더 풍부하게 즐길 수 있는 빅싸이순살")
         ));
-        Menu chickenMenu = new Menu(chickenItems, "치킨", 1);
+        Menu chickenMenu = new Menu(chickenItems, "치킨", 2);
 
         List<MenuItem> sideItems = new ArrayList<>(Arrays.asList(
                 new MenuItem("케이준 양념감자",2000,3500,"맘스터치의 베스트 사이드메뉴! 케이준스타일의 바삭한 양념감자."),
@@ -38,7 +38,7 @@ public class App {
                 new MenuItem("바삭크림치즈볼",2700,""),
                 new MenuItem("할라피뇨너겟",5400,7800,"콕콕 박힌 할라피뇨로 매콤하게 즐기는 할라피뇨 너겟")
         ));
-        Menu sideMenu = new Menu(sideItems, "사이드", 2);
+        Menu sideMenu = new Menu(sideItems, "사이드", 3);
 
         menuList.add(burgerMenu);
         menuList.add(chickenMenu);

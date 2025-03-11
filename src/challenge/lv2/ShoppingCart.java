@@ -37,9 +37,7 @@ public class ShoppingCart {
             System.out.println("||" + menuList.get(i).getName() +"\t "+menuList.get(i).getSinglePrice()+"원 \t  X " + count.get(i) + "\t \t " + price.get(i) +"원");
         }
         System.out.println("\n =========================<총 금액>===========================");
-        for (Integer integer : price) {
-            totalPrice += integer;
-        }
+        totalPrice = price.stream().mapToInt(Integer::intValue).sum();
         System.out.println("||\t 총 \t " + totalPrice + "원");
         System.out.println("=============================================================");
     }
@@ -81,14 +79,10 @@ public class ShoppingCart {
         }
         System.out.println("||0. 돌아가기 ");
         System.out.println("\n =========================<총 금액>===========================");
-        for (Integer integer : price) {
-            totalPrice += integer;
-        }
+        totalPrice = price.stream().mapToInt(Integer::intValue).sum();
         System.out.println("||\t 총 \t " + totalPrice + "원");
         System.out.println("=============================================================");
-
     }
-
 
     public void setCartItem(int index){
         System.out.println((index+1) + "번 "+menuList.get(index).getName() + "을 장바구니에서 제외합니다.");
