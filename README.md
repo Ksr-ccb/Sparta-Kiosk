@@ -55,7 +55,7 @@
 ### ✔️ Lv.3 객체 지향 설계를 적용해 순서 제어를 클래스로 관리하기
  <p align="center"><img src="https://github.com/user-attachments/assets/75e7f0fc-3137-4746-8dbd-d0f44b07fcea" width="500" /></p>
 
->- [ ]  **요구사항이 가지는 의도**
+- [ ]  **요구사항이 가지는 의도**
     - [ ]  객체 지향 개념을 학습하고, 데이터를 구조적으로 관리하며 프로그램을 설계하는 방법을 익힙니다.
     - [ ]  `main` 함수에서 관리하던 전체 순서 제어를 `Kiosk` 클래스를 통해 관리합니다.
 - [ ]  **`Kiosk` 클래스 생성하기**
@@ -91,7 +91,7 @@
  - [ ]  `MenuItem`, `Menu` 그리고 `Kiosk` 클래스의 필드에 직접 접근하지 못하도록 설정합니다.
     - [ ]  Getter와 Setter 메서드를 사용해 데이터를 관리합니다.
       
-✅ 단계 만들 때 당연하게 클래스 내부변수는 private해주고 게터와 세터를 만들어줬는데 이게 5단계 를 동시에 만족해버렸다.  😅
+✅ 단계 만들 때 클래스 내부변수는 private해주고 게터와 세터를 만들어서 5단계를 동시에 만족해버렸다. 😅
 
   ✅메뉴 카테고리 이름을 반환하는 메서드같은 경우는 menu에 카테고리 이름과 카테고리 번호를 저장하는 변수가 있다. 
 
@@ -101,8 +101,9 @@
 
 ✅ 카테고리에 맞는 메뉴 보여주는 함수도 Menu에 넣었다.
 
+---
 ## ❤️‍🔥도전과제
-### ✔️ Lv.1
+### ✔️ Lv.1 장바구니 및 구매하기 기능을 추가하기
  <p align="center"><img src="https://github.com/user-attachments/assets/f231af91-3d36-4388-b33e-d645b037fd98" width="800" /></p>
  
  - [ ]  **요구사항이 가지는 의도**
@@ -113,12 +114,13 @@
         - [ ]  사용자 입력에 따른 예외 처리와 조건 분기를 연습
               
 ✅  MenuItem과 비슷한 형식의 장바구니를 만들어주고, 장바구니도 안에 `List<MenuItem>`을 가진다.
+
 ✅ 리스트가 비었는지 확인하면서 추가 출력 여부를 추가하고, 출력하는 함수도 가진다.
 
-### ✔️ Lv.2
-<p align="center"><img src="https://github.com/user-attachments/assets/a11ce9de-6183-42ca-a9b1-30c69ec18ded" width="800" /></p>
+### ✔️ Lv.2 Enum, 람다 & 스트림을 활용한 주문 및 장바구니 관리
+<p align="center"><img src="https://velog.velcdn.com/images/tofha054/post/57aca87a-d6e5-4ff0-9bb6-f2edd2d53516/image.png" width="800" /></p>
 
- <p align="center"><img src="https://velog.velcdn.com/images/tofha054/post/57aca87a-d6e5-4ff0-9bb6-f2edd2d53516/image.png" width="800" /></p>
+ <p align="center"><img src="https://velog.velcdn.com/images/tofha054/post/cc46d611-90b0-4ae8-8bf7-eba9f51237f6/image.png" width="800" /></p>
 
 - [ ]  **요구사항이 가지는 의도**
     - [ ]  **의도** : 고급 자바 기능을 활용해 프로그램의 효율성과 코드의 가독성을 개선하는 것을 목표로 합니다.
@@ -126,7 +128,6 @@
         - [ ]  Enum을 통해 상수를 안전하게 관리하고, 프로그램 구조를 간결하게
         - [ ]  제네릭을 활용하여 데이터 유연성을 높이고, 재사용 가능한 코드를 설계
         - [ ]  스트림 API를 사용하여 데이터를 필터링하고, 간결한 코드로 동작을 구현
->---
 - [ ]  **Enum을 활용한 사용자 유형별 할인율 관리하기**
     - [ ]  사용자 유형의 Enum 정의 및 각 사용자 유형에 따른 할인율 적용
         - [ ]  예시 : 군인, 학생, 일반인
@@ -136,7 +137,64 @@
     - [ ]  기존 장바구니에서 특정 메뉴 빼기 기능을 통한 스트림 활용
         - [ ]  예시 : 장바구니에 SmokeShack 가 들어 있다면, stream.filter를 활용하여 특정 메뉴 이름을 가진 메뉴 장바구니에서 제거
 
-✅  키오스크가 하는 일이 너무많아서 조금 분리해주고 싶었다.
-✅  많이 떼내는 것도 좀 복잡해질 것 같아서 입력값 검증하는 정도만 떼서 계산기 때 처럼 UserInputManager 클래스 생성해주고 거기서 검증했다
-✅  Enum같은 경우는 할인 목록 선택에 따라서 enum 타입을 정해준다.
-✅  그리고 쇼핑카트 클래스에서 total금액을 조정하는 함수를 작동시켜준다!!
+✅  키오스크가 하는 일이 너무많아서 일부 분리를 위해 사용자 입력을 받고 입력 형태를 검증하는 클래스를 생성.
+
+✅  Enum같은 경우는 할인 목록 선택에 따라서 타입을 정해준다.
+
+✅  쇼핑카트 클래스에서 total금액을 조정하는 함수 추가
+
+✅ 목록을 프린트 하는 경우 람다와 스트림을 활용해서 출력한다. 
+
+---
+  # 깃 컨벤션 
+참고 :   https://treasurebear.tistory.com/70
+
+
+
+🎨::
+코드의 구조/형태 개선
+Improve structure / format of the code.
+
+⚡️::
+성능 개선
+Improve performance.
+
+🔥::
+코드/파일 삭제
+Remove code or files.
+
+🐛::
+버그 수정
+Fix a bug.
+
+✨::
+새 기능
+Introduce new features.
+
+📝::
+문서 추가/수정
+Add or update documentation.
+
+💄::
+UI/스타일 파일 추가/수정
+Add or update the UI and style files.
+
+♻️::
+코드 리팩토링
+Refactor code.
+
+➕::
+의존성 추가
+Add a dependency.
+
+➖::
+의존성 제거
+Remove a dependency.
+
+🔨::
+개발 스크립트 추가/수정
+Add or update development scripts.
+
+💡::
+주석 추가/수정
+Add or update comments in source code.
