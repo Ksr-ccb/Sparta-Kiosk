@@ -42,6 +42,9 @@ public class ShoppingCart {
         System.out.println("=============================================================");
     }
 
+    public int getTotalPrice(){
+        return totalPrice;
+    }
 
     public boolean orderMenu(int num){ // 장바구니 메뉴있으면 밑에꺼, 없으면 출력안하게 해줌
         if(menuList.isEmpty()){

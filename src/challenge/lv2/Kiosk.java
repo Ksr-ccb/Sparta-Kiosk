@@ -202,8 +202,12 @@ public class Kiosk {
             try {
                 discountInput = userInputManager.inputIntegerValue();
                 if (discountInput == 1) {
-                    discountType = DiscountType.Coupon;
-                    break;
+                    if(shoppingCart.getTotalPrice() > 10000){
+                        discountType = DiscountType.Coupon;
+                        break;
+                    }else{
+                        System.out.println("쿠폰은 10000원이상만 사용 가능해요");
+                    }
                 } else if (discountInput == 2) {
                     discountType = DiscountType.Cash;
                     break;
