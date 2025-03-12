@@ -29,10 +29,6 @@ package challenge.lv2;
 //    public abstract int discountPrice(int price);
 //}
 
-@FunctionalInterface
-interface DiscountStructure {
-    int discountPrice(int price);
-}
 
 public enum DiscountType {
     Coupon(price -> (price > 10000) ? price - 3000 : price),
