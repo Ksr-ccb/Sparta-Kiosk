@@ -13,7 +13,7 @@
 # 📚 설계 
 ## 💓 필수과제
 ### ✔️ Lv.1 기본적인 키오스크를 프로그래밍
- <p align="center"><img src="https://github.com/user-attachments/assets/8ddbd20b-2283-42dc-9d58-9e3ef0c0fed9" width="500" /></p>
+ <p align="center"><img src="https://github.com/user-attachments/assets/fa383d94-9214-41ed-90c2-5bf9509018be" /></p>
  
 - [ ]  **요구사항이 가지는 의도**
     - [ ]  입력 처리와 간단한 흐름 제어를 복습합니다. (프로그래밍 검증**)**
@@ -23,8 +23,7 @@
     - [ ]  제시된 메뉴 중 입력받은 숫자에 따라 다른 로직을 실행하는 코드를 작성합니다.
     - [ ]  반복문을 이용해서 특정 번호가 입력되면 프로그램을 종료합니다.
     
-  
-   
+#### ✍ 고려한 점   
  ✅1단계의 경우는 계산기 과제 복습의 의도가 보여서 기본적인 기능을 구현했다.
  
  ✅사용자 클래스는 따로 정의하지않았고, main함수 바깥에서 선언되는 함수도없었다.
@@ -32,8 +31,8 @@
  ---
 
 ### ✔️ Lv.2 객체 지향 설계를 적용해 햄버거 메뉴를 클래스로 관리하기
- <p align="center"><img src="https://github.com/user-attachments/assets/6731fa54-6cef-4d04-b734-1eefb420c5ea" width="500" /></p>
- 
+ <p align="center"><img src="https://github.com/user-attachments/assets/c3898972-ef87-4ed1-9a16-3e053bb45ea9" /></p>
+
 - [ ]  **요구사항이 가지는 의도**
     - [ ]  객체 지향 개념을 학습하고, 데이터를 구조적으로 관리하며 프로그램을 설계하는 방법을 익힙니다.
     - [ ]  햄버거 메뉴를 `MenuItem` 클래스와 `List`를 통해 관리합니다.
@@ -46,16 +45,17 @@
     - [ ]  `List`를 선언하여 여러 `MenuItem`을 추가합니다.
         - [ ]  `List<MenuItem> menuItems = new ArrayList<>();`
     - [ ]  반복문을 활용해 `menuItems`를 탐색하면서 하나씩 접근합니다.
-    
-✅요구 사항에 맞게 구현 전에 미리 눈으로 보기 쉽게 구조 제작.
+
+#### ✍ 고려한 점   
+✅요구 사항에 맞게 구현 전에 미리 눈으로 보기 쉽게 구조 제작.(추후 나머지 모든 단계에서도 구조 제작)
 
 ✅MenuItem 클래스에는 `이름, 단품가격, 세트가격, 설명` 필드를 갖고 모두 `private`으로 선언해서 	`getter`, `setter`준비해줬다.
 
 --- 
 ### ✔️ Lv.3 객체 지향 설계를 적용해 순서 제어를 클래스로 관리하기
- <p align="center"><img src="https://github.com/user-attachments/assets/75e7f0fc-3137-4746-8dbd-d0f44b07fcea" width="500" /></p>
+ <p align="center"><img src="https://github.com/user-attachments/assets/22864e47-9d73-493b-885b-3e4d5b8750d8"/></p>
 
->- [ ]  **요구사항이 가지는 의도**
+- [ ]  **요구사항이 가지는 의도**
     - [ ]  객체 지향 개념을 학습하고, 데이터를 구조적으로 관리하며 프로그램을 설계하는 방법을 익힙니다.
     - [ ]  `main` 함수에서 관리하던 전체 순서 제어를 `Kiosk` 클래스를 통해 관리합니다.
 - [ ]  **`Kiosk` 클래스 생성하기**
@@ -71,16 +71,18 @@
         - [ ]  유효하지 않은 입력에 대해 오류 메시지를 출력합니다.
         - [ ]  `0`을 입력하면 프로그램이 ‘뒤로가기’되거나 ‘종료’됩니다.
 
+#### ✍ 고려한 점   
+
 ✅ main함수에서 키오스크 객체와 `List<MenuItem>`을 만들어주고, 키오스크 생성자에 해당 리스트를 넘기고 키오스크 시작 함수를 하면서 메인함수의 역할은 끝이난다.
 
-  ✅이제부터 메인함수의 역할은 크게 없어질 것이다.
+✅ 이제부터 메인함수의 역할은 크게 없어질 것이다.
 
-✅ 레벨 2와 별다른 기능적인 차이는 없다.
+✅ 레벨 2와 별다른 기능적인 차이는 없다.(리팩토링 개념)
 
 ---
 
 ### ✔️ Lv.4 & Lv.5 음식 메뉴와 주문 내역을 클래스 기반으로 관리하기 & 캡슐화 적용하기
- <p align="center"><img src="https://github.com/user-attachments/assets/62bf3ad4-69c3-4a19-98c6-12b557954971" width="800" /></p>
+ <p align="center"><img src="https://github.com/user-attachments/assets/2e6b9f0c-aa8c-46e6-bd70-f9e644a9532d"/></p>
 
  - [ ]  **`Menu` 클래스 생성하기**
     - [ ]  설명 : MenuItem 클래스를 관리하는 클래스입니다. 
@@ -90,35 +92,43 @@
     - [ ]  메뉴 카테고리 이름을 반환하는 메서드가 구현되어야 합니다.
  - [ ]  `MenuItem`, `Menu` 그리고 `Kiosk` 클래스의 필드에 직접 접근하지 못하도록 설정합니다.
     - [ ]  Getter와 Setter 메서드를 사용해 데이터를 관리합니다.
-      
-✅ 단계 만들 때 당연하게 클래스 내부변수는 private해주고 게터와 세터를 만들어줬는데 이게 5단계 를 동시에 만족해버렸다.  😅
 
-  ✅메뉴 카테고리 이름을 반환하는 메서드같은 경우는 menu에 카테고리 이름과 카테고리 번호를 저장하는 변수가 있다. 
+#### ✍ 고려한 점   
+✅ 단계 만들 때 클래스 내부변수는 private해주고 게터와 세터를 만들어서 5단계를 동시에 만족해버렸다. 😅
+
+✅ 메뉴 카테고리 이름을 반환하는 메서드같은 경우는 menu에 카테고리 이름과 카테고리 번호를 저장하는 변수가 있다. 
+  -> 출력할 때, 혹은 분류할 때 대분류/소분류 나누는 것 처럼 넘버링을 하면 관리가 쉽지 않을까 하는 생각으로 지정해주었음.
 
 ✅ 각각의 Menu객체들이 주어진 카테고리에 맞는 `List<MenuItem>`을 하나씩 들고 Menu리스트에 포함이 된다.
-
-이 Menu리스트들이 키오스크 클래스의 생성자로 들어가는 형식이다.
+  ->이 Menu리스트들이 키오스크 클래스의 생성자로 들어가는 형식이다.
 
 ✅ 카테고리에 맞는 메뉴 보여주는 함수도 Menu에 넣었다.
 
+✅ Kiosk의 kioskStart() 함수안에서 작동하던 로직들을 분리해서 private함수로 선언해주었다.
+
+---
 ## ❤️‍🔥도전과제
-### ✔️ Lv.1
- <p align="center"><img src="https://github.com/user-attachments/assets/f231af91-3d36-4388-b33e-d645b037fd98" width="800" /></p>
- 
+### ✔️ Lv.1 장바구니 및 구매하기 기능을 추가하기
+ <p align="center"><img src="https://github.com/user-attachments/assets/eb6accac-5143-47bc-a6a5-358f30337eb1"/></p>
+
  - [ ]  **요구사항이 가지는 의도**
     - [ ]  **의도**: 클래스 간 연계를 통해 객체 지향 프로그래밍의 기본적인 설계를 익히고, 사용자 입력에 따른 프로그램 흐름 제어와 상태 관리를 학습
     - [ ]  **목표**
         - [ ]  클래스 간 역할 분리를 이해하고, 적절히 협력하는 객체를 설계
         - [ ]  프로그램 상태 변경 및 데이터 저장을 연습
         - [ ]  사용자 입력에 따른 예외 처리와 조건 분기를 연습
-              
-✅  MenuItem과 비슷한 형식의 장바구니를 만들어주고, 장바구니도 안에 `List<MenuItem>`을 가진다.
+
+#### ✍ 고려한 점   
+✅ MenuItem과 비슷한 형식의 장바구니를 만들어주고, 장바구니 데이터를 관리하기 위해 가격, 물품개수, 물품을 저장해줄 리스트 생성
+
 ✅ 리스트가 비었는지 확인하면서 추가 출력 여부를 추가하고, 출력하는 함수도 가진다.
 
-### ✔️ Lv.2
-<p align="center"><img src="https://github.com/user-attachments/assets/a11ce9de-6183-42ca-a9b1-30c69ec18ded" width="800" /></p>
+✅ 장바구니 내용을 거쳐서 결제가 가능하기 때문에 중간에 출력하는 함수를 생성해준다.
 
- <p align="center"><img src="https://velog.velcdn.com/images/tofha054/post/57aca87a-d6e5-4ff0-9bb6-f2edd2d53516/image.png" width="800" /></p>
+
+### ✔️ Lv.2 Enum, 람다 & 스트림을 활용한 주문 및 장바구니 관리
+<p align="center"><img src="https://github.com/user-attachments/assets/fc7d733c-7ef7-458d-a3e2-a7ae8d2dc84c" width="800" /></p>
+ <p align="center"><img src="https://github.com/user-attachments/assets/93410351-1c65-48a9-be71-e051e3319827" width="800" /></p>
 
 - [ ]  **요구사항이 가지는 의도**
     - [ ]  **의도** : 고급 자바 기능을 활용해 프로그램의 효율성과 코드의 가독성을 개선하는 것을 목표로 합니다.
@@ -126,7 +136,6 @@
         - [ ]  Enum을 통해 상수를 안전하게 관리하고, 프로그램 구조를 간결하게
         - [ ]  제네릭을 활용하여 데이터 유연성을 높이고, 재사용 가능한 코드를 설계
         - [ ]  스트림 API를 사용하여 데이터를 필터링하고, 간결한 코드로 동작을 구현
->---
 - [ ]  **Enum을 활용한 사용자 유형별 할인율 관리하기**
     - [ ]  사용자 유형의 Enum 정의 및 각 사용자 유형에 따른 할인율 적용
         - [ ]  예시 : 군인, 학생, 일반인
@@ -136,7 +145,70 @@
     - [ ]  기존 장바구니에서 특정 메뉴 빼기 기능을 통한 스트림 활용
         - [ ]  예시 : 장바구니에 SmokeShack 가 들어 있다면, stream.filter를 활용하여 특정 메뉴 이름을 가진 메뉴 장바구니에서 제거
 
-✅  키오스크가 하는 일이 너무많아서 조금 분리해주고 싶었다.
-✅  많이 떼내는 것도 좀 복잡해질 것 같아서 입력값 검증하는 정도만 떼서 계산기 때 처럼 UserInputManager 클래스 생성해주고 거기서 검증했다
-✅  Enum같은 경우는 할인 목록 선택에 따라서 enum 타입을 정해준다.
-✅  그리고 쇼핑카트 클래스에서 total금액을 조정하는 함수를 작동시켜준다!!
+#### ✍ 고려한 점  
+✅ 키오스크가 하는 일이 너무많아서 일부 분리를 위해 사용자 입력을 받고 입력 형태를 검증하는 클래스를 생성.
+  -> public 함수인 kioskStart() 함수는 흐름을 보기 쉽도록 최소한의 내용만 남기고 모두 private함수로 빼주었다.
+  -> 사용자 입력을 sc.nextInt()가 아니라 nextLine으로 받아와서 스트링을 입력해도 오류 출력되지 않게 처리했다.
+
+✅ Enum같은 경우는 할인 목록 선택에 따라서 타입을 정해준다.
+
+✅ Enum 클래스의 discountPrice 함수를abstract int 형태로 선언했다가 함수형인터페이스를 이용해서 람다형식으로 리팩토링 해주었음 (둘 다 연습했다!)
+
+✅ 쇼핑카트 클래스에서 total금액을 조정하는 함수를 추가했다.
+
+✅ 목록을 프린트 하는 경우 람다와 스트림을 활용해서 출력한다.
+  -> 이때, 출력에 `index`가 필요한 경우는 제외했다. (foreach-> 에서 두번 탐색 금지시킴)
+
+---
+  # 깃 컨벤션 
+참고 :   https://treasurebear.tistory.com/70
+
+
+
+🎨::
+코드의 구조/형태 개선
+Improve structure / format of the code.
+
+⚡️::
+성능 개선
+Improve performance.
+
+🔥::
+코드/파일 삭제
+Remove code or files.
+
+🐛::
+버그 수정
+Fix a bug.
+
+✨::
+새 기능
+Introduce new features.
+
+📝::
+문서 추가/수정
+Add or update documentation.
+
+💄::
+UI/스타일 파일 추가/수정
+Add or update the UI and style files.
+
+♻️::
+코드 리팩토링
+Refactor code.
+
+➕::
+의존성 추가
+Add a dependency.
+
+➖::
+의존성 제거
+Remove a dependency.
+
+🔨::
+개발 스크립트 추가/수정
+Add or update development scripts.
+
+💡::
+주석 추가/수정
+Add or update comments in source code.
