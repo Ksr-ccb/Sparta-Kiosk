@@ -1,4 +1,7 @@
 # 💡 키오스크 기능
+  ### JavaDoc
+  https://ksr-ccb.github.io/Sparta-Kiosk/challenge/lv2/package-summary.html
+  
   ### 사용자 인터페이스 방식
    - 콘솔 기반
      
