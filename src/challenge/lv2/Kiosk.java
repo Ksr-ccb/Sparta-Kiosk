@@ -3,22 +3,47 @@ package challenge.lv2;
 import java.util.InputMismatchException;
 import java.util.List;
 
+/**
+ * {@code Kiosk} 클래스는 키오스크의 전체적인 흐름을 관리합니다.
+ * 모든 메뉴인 {@link Menu} 리스트와 키오스크 진행에 필요한 {@link ShoppingCart},{@link UserInputManager}을 가집니다.
+ * 그 외에 키오스크 흐름을 제어할 수 있는 변수들을 global로 가집니다.
+ */
 public class Kiosk {
+    /** 전체 메뉴를 담는 {@link Menu} 리스트  */
     private final List<Menu> menuList;
+
+    /** 장바구니 객체 */
     private final ShoppingCart shoppingCart;
+
+    /** 사용자 입력을 받는 객체 */
     private final UserInputManager userInputManager;
 
+    /** 어떤 서비스 이용할 것인지 flag 역할을 하는 값  */
     private int categoryInput = 0; //어떤 서비스 이용할 것인지
+
+    /** 어떤 메뉴를 입력 했는지 저장하는 값  */
     private int itemInput = 0; // 어떤 메뉴를 입력 했는지
 
+    /** 장바구니가 비어있나? 확인 여부  */
     private boolean isCartEmpty = true; //장바구니가 비어있나?
 
+    /**
+     * 새로운 {@code Menu} 객체를 생성합니다.
+     *
+     * @param menuList     전체 메뉴를 담는 {@link Menu} 리스트
+     * @param shoppingCart  카테고리 이름
+     * @param userInputManager   카테고리 번호
+     */
     Kiosk(List<Menu> menuList, ShoppingCart shoppingCart, UserInputManager userInputManager){
         this.menuList = menuList;
         this.shoppingCart = shoppingCart;
         this.userInputManager = userInputManager;
     }
 
+    /**
+     * 키오스크를 작동하는 함수
+     * 작동 흐름은 <a href="https://github.com/Ksr-ccb/Sparta-Kiosk?tab=readme-ov-file">키오스크 readme.md</a> 의 아래에 정리해놓았습니다.
+     */
     public void startKiosk() {
         System.out.println("방문을 환영합니다. 서비스를 시작합니다.");
 
@@ -53,7 +78,11 @@ public class Kiosk {
         }
     }
 
-    //장바구니 탐색하기
+    /**
+     *  장바구니를 탐색하는 함수
+     *  장바구니 서비스인 1.주문. 2.장바구니 수정. 0. 나가기를 선택할 수 있습니다.
+     *  선택된 값에 따라서 대응하는 함수를 호출합니다.
+     */
     private void browseCart() {
         while (true) {
             shoppingCart.printCart(); //장바구니 내용출력
@@ -84,7 +113,12 @@ public class Kiosk {
         }
     }
 
-    // 수정할 아이템 고르는 인풋 받기
+    /**
+     *  수정할 아이템 고르는 인풋 받기
+     *  장바구니 내용들을 출력하고 앞에 인덱스가 붇는데, 받은 숫자 값을 확인하고 장바구니 요소를 하나 삭제합니다.
+     *  삭제 후에 다시 장바구니 목록을 불러와서 여러번 삭제할 수 있습니다.
+     *  {@return boolean} -> false일시 장바구니 서비스 목록으로 되돌아갑니다.
+     */
     private boolean inputEditItem() {
         while (true) {
             shoppingCart.printEditMenu(); //장바구니 내용출력
@@ -106,6 +140,10 @@ public class Kiosk {
         }
     }
 
+    /**
+     * 전체 메뉴 카테고리를 출력하는 함수
+     * 장바구니가 비어있는지 확인하는 하여 isCartEmpty의 값을 수정합니다.
+     */
     private void printCategory(){
         int length = menuList.size();
         //카테고리 출력
@@ -121,22 +159,26 @@ public class Kiosk {
         isCartEmpty = shoppingCart.orderMenu(length+1);
     }
 
-    // 어떤 카테고리 사용할지 입력 받기
-    private void inputCategory(){
-        int length=0;
+    /**
+     * 어떤 카테고리 사용할지 입력 받기
+     * userInputManager에서 받아온 '카테고리 혹은 장바구니 서비스 이용' 입력에 따라 오류 처리를 하는함수입니다.
+     * isCartEmpty값에 따라서 사용자가 입력할 수 있는 바운더리를 넓힙니다.
+     */
+    private void inputCategory() {
+        int length = 0;
 
         while (true) {
             printCategory();
-            if(isCartEmpty){
+            if (isCartEmpty) {
                 length = menuList.size();
-            }else{
-                length = menuList.size()+2;
+            } else {
+                length = menuList.size() + 2;
             }
-            try{
+            try {
                 categoryInput = userInputManager.inputIntegerValue();
                 if (categoryInput < 0 || categoryInput > length) {
                     throw new InputMismatchException();
-                }else{
+                } else {
                     return;
                 }
             } catch (InputMismatchException e) {
@@ -145,7 +187,14 @@ public class Kiosk {
         }
     }
 
-    // 음식 메뉴를 선택하기
+    /**
+     * 음식 메뉴를 선택하는 함수입니다.
+     * userInputManager에게서 받아온 '메뉴 선택 값'에 따라 오류 처리를 하는함수입니다.
+     * 리턴 값에 따라서 inputMenu를 호출한 함수가 다음으로 해야할 일을 결정할 수 있습니다.
+     * @param selectedMenu 사용자가 선택한 메뉴 카테고리
+     * @return {@code true} - 유효한 메뉴를 선택한 경우
+     *         {@code false} - 사용자가 0을 입력하여 카테고리로 돌아간 경우
+     */
     private boolean inputMenu(Menu selectedMenu){
         while (true) {
             selectedMenu.printMenuItems(); //해당 카테고리의 음식 출력
@@ -164,7 +213,10 @@ public class Kiosk {
         }
     }
 
-    // 결제하기
+    /**
+     * 최종적으로 결제할지 여부를 결정하는 함수입니다.
+     * 마찬가지로 userInputManager에게서 받아온 값으로 결제 출력과 돌아가기 기능을 합니다.
+     */
     private void purchaseCart(){
         int purchaseInput;
 
@@ -191,7 +243,13 @@ public class Kiosk {
         }
     }
 
-    //할인 적용하기
+
+    /**
+     * 할인을 적용하는 함수입니다.
+     * 할인목록을 출력하는 함수를 호출하고
+     * userInputManager에서 받아온 값으로 어떤 할인을 적용할지 지정해줍니다.
+     * 지정된 할인에 따라서 장바구니의 totalPrice값을 조정합니다.
+     */
     private void hasDiscount(){
         DiscountType discountType;
         int discountInput;
@@ -225,7 +283,12 @@ public class Kiosk {
     }
 
 
-    //장바구니 담기 여부 입력받기
+    /**
+     * 장바구니 담기 여부 입력받기
+     * 카테고리가 선택이되고 해당 카테고리에 속하는 음식 메뉴들을 출력합니다.
+     * 출력한 뒤 userInputManager에서 사용자가 선택한 메뉴(+ 나가기) 값에 대해 출력값을 다르게 합니다.
+     * @param selectedMenu 선택한 카테고리 목록
+     */
     private void inputOrder(Menu selectedMenu){
         MenuItem selectMenu = selectedMenu.selectMenuItem(itemInput - 1);
         int orderInput ;
@@ -251,6 +314,10 @@ public class Kiosk {
             }
         }
     }
+
+    /**
+     * 할인 목록을 출력하는 함수
+     */
     public void printDiscount(){
         System.out.println("=========================[ 주문하기 ]=============================");
         System.out.println("|| 1. 3000원 할인 쿠폰(1만원 이상 시 사용가능) ");

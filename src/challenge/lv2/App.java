@@ -4,7 +4,18 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+/**
+ * 키오스크 작동을 시작 시킬 메인함수를 포함하는 클래스 입니다.
+ * 메인 함수 안에서는 키오스크 작동에 필요할 여러 객체가 만들어집니다.
+ * {@link MenuItem} 리스트, {@link Menu} 리스트, {@link ShoppingCart} (장바구니 객체), {@link UserInputManager} (사용자 입력을 받는 클래스)
+ * 마지막으로 {@link Kiosk} 키오스크 객체가 해당됩니다.
+ */
 public class App {
+
+    /**
+     * 키오스크 작동시키는 메인함수
+     * @param args
+     */
     public static void main(String[] args) {
         List<Menu> menuList = new ArrayList<>();
 
