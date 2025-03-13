@@ -15,7 +15,7 @@ public class App {
     /**
      * 키오스크 작동시키는 메인함수
      */
-    public static void main(String[] args) {
+    public static void main() {
         List<Menu> menuList = new ArrayList<>();
 
         List<MenuItem> burgerItems = new ArrayList<>(Arrays.asList(

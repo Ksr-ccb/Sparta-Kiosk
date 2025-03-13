@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"challenge.lv2","l":"App"},{"p":"challenge.lv2","l":"DiscountType"},{"p":"challenge.lv2","l":"Kiosk"},{"p":"challenge.lv2","l":"Menu"},{"p":"challenge.lv2","l":"MenuItem"},{"p":"challenge.lv2","l":"ShoppingCart"},{"p":"challenge.lv2","l":"UserInputManager"}];updateSearchResults();

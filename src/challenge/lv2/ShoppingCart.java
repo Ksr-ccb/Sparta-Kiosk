@@ -24,7 +24,10 @@ public class ShoppingCart {
     /** 장바구니 안에 들어간 메뉴의 개수*/
     private int totalCount = 0;
 
-    public ShoppingCart() {
+    /**
+     * 장바구니를 생성자
+     */
+    ShoppingCart() {
         count = new ArrayList<>();
         price = new ArrayList<>();
     }
@@ -76,6 +79,7 @@ public class ShoppingCart {
 
     /**
      * 총 금액을 반환합니다.
+     * @return 총 금액
      */
     public int getTotalPrice(){
         return totalPrice;

@@ -11,7 +11,11 @@ import java.util.Scanner;
  */
 public class UserInputManager {
     /** 사용자 인풋을 받기위한 스캐너 */
-    private final Scanner sc = new Scanner(System.in);
+    private Scanner sc = null;
+
+    void UserInputManage(){
+        sc = new Scanner(System.in);
+    }
 
     /**
      * 받아온 입력값이 정수인지 확인하는 함수입니다.
