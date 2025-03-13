@@ -11,13 +11,13 @@ import java.util.List;
 public class Menu {
 
     /** 카테고리 이름 */
-    private String categoryName = "";
+    private final String categoryName;
 
     /** 카테고리 번호 */
-    private int categoryNum;
+    private final int categoryNum;
 
     /** 관리할 메뉴 아이템 리스트  */
-    private List<MenuItem> menuItems = new ArrayList<>();
+    private final List<MenuItem> menuItems;
 
     /**
      * 새로운 {@code Menu} 객체를 생성합니다.

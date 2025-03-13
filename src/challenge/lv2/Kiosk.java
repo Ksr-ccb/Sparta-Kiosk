@@ -63,7 +63,7 @@ public class Kiosk {
 
                 Menu selectedMenu;
                 selectedMenu = menuList.get(categoryInput-1);// 카테고리 맞는 메뉴가져오기
-                if(!inputMenu(selectedMenu)){ continue; };// 입력받은 카테고리에 맞는 메뉴 보여주고 메뉴 입력받기
+                if(!inputMenu(selectedMenu)){ continue; }// 입력받은 카테고리에 맞는 메뉴 보여주고 메뉴 입력받기
                 inputOrder(selectedMenu); // 장바구니 담을까?
 
             }else if (categoryInput == menuList.size() +1){ // 장바구니 들어감
@@ -101,7 +101,7 @@ public class Kiosk {
                     //장바구니 수정
                     if(inputEditItem()){
                         return;
-                    };
+                    }
                 } else{
                     System.out.println("카테고리로 돌아갑니다.");
                     return;
@@ -148,9 +148,7 @@ public class Kiosk {
         int length = menuList.size();
         //카테고리 출력
         System.out.println("========================================< 맘스땃쥐 >============================================");
-
-        menuList.stream()
-                .forEach(value->{
+        menuList.forEach(value->{
                         System.out.println("|| " + value.getCategoryNum()+ ". " + value.getCategoryName());
                     }
                 );
@@ -165,7 +163,7 @@ public class Kiosk {
      * isCartEmpty값에 따라서 사용자가 입력할 수 있는 바운더리를 넓힙니다.
      */
     private void inputCategory() {
-        int length = 0;
+        int length;
 
         while (true) {
             printCategory();

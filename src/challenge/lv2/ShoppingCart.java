@@ -10,19 +10,24 @@ import java.util.List;
  */
 public class ShoppingCart {
     /** 장바구니 목록 리스트 */
-    private final List<MenuItem> menuList = new ArrayList<MenuItem>(); //장바구니에 담은 메뉴
+    private final List<MenuItem> menuList = new ArrayList<>(); //장바구니에 담은 메뉴
 
     /** 각 메뉴를 몇개씩 샀는지 저장하는 리스트 */
-    private final List<Integer> count = new ArrayList<Integer>(); // 메뉴 몇개씩 샀나
+    private final List<Integer> count; // 메뉴 몇개씩 샀나
 
     /** 각 메뉴의 가격을 갯수에 맞게 저장하는 리스트*/
-    private final List<Integer> price = new ArrayList<Integer>();
+    private final List<Integer> price;
 
     /** 최종 계산에서 쓰이는 합계 가격*/
     private int totalPrice =0;
 
     /** 장바구니 안에 들어간 메뉴의 개수*/
     private int totalCount = 0;
+
+    public ShoppingCart() {
+        count = new ArrayList<>();
+        price = new ArrayList<>();
+    }
 
     /**
      * 장바구니에 메뉴를 추가합니다.

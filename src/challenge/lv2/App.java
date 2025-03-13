@@ -14,7 +14,6 @@ public class App {
 
     /**
      * 키오스크 작동시키는 메인함수
-     * @param args
      */
     public static void main(String[] args) {
         List<Menu> menuList = new ArrayList<>();
